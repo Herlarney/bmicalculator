@@ -1,7 +1,9 @@
-// ignore_for_file: prefer_const_constructors, duplicate_ignore
+// ignore_for_file: prefer_const_constructors, duplicate_ignore, unused_import, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'iconcontent.dart';
 import 'ReusableCard.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class BMICaculator extends StatelessWidget {
   const BMICaculator({Key? key}) : super(key: key);
@@ -23,6 +25,10 @@ class BMICaculator extends StatelessWidget {
               children: <Widget>[
                 Expanded(
                     child: ReusableCard(
+                  cardChild: IconContent(
+                    icon: FontAwesomeIcons.mars,
+                    label: 'Male',
+                  ),
                   // ignore: prefer_const_constructors
                   color: Color(0xFF1D1E33),
                   width: 180,
@@ -41,6 +47,7 @@ class BMICaculator extends StatelessWidget {
               // ignore: prefer_const_constructors
               color: Color(0xFF1D1E33),
               width: double.infinity,
+              height: double.infinity,
             )),
             Row(
               children: <Widget>[
