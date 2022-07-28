@@ -5,9 +5,17 @@ import 'iconcontent.dart';
 import 'ReusableCard.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class BMICaculator extends StatelessWidget {
+const activecardColor = Color(0xFF1D1E33);
+const inactivecardColor = Color(0x0FF111328);
+
+class BMICaculator extends StatefulWidget {
   const BMICaculator({Key? key}) : super(key: key);
 
+  @override
+  State<BMICaculator> createState() => _BMICaculatorState();
+}
+
+class _BMICaculatorState extends State<BMICaculator> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,13 +38,16 @@ class BMICaculator extends StatelessWidget {
                     label: 'Male',
                   ),
                   // ignore: prefer_const_constructors
-                  color: Color(0xFF1D1E33),
+                  color: activecardColor,
                   width: 180,
                 )),
                 Expanded(
                   child: ReusableCard(
-                    // ignore: prefer_const_constructors
-                    color: Color(0xFF1D1E33),
+                    cardChild: IconContent(
+                      icon: FontAwesomeIcons.venus,
+                      label: 'Female',
+                    ),
+                    color: activecardColor,
                     width: 180,
                   ),
                 ),
@@ -45,17 +56,17 @@ class BMICaculator extends StatelessWidget {
             Expanded(
                 child: ReusableCard(
               // ignore: prefer_const_constructors
-              color: Color(0xFF1D1E33),
+              color: activecardColor,
               width: double.infinity,
               height: double.infinity,
             )),
             Row(
               children: <Widget>[
                 Expanded(
-                    child: ReusableCard(color: Color(0xFF1D1E33), width: 180)),
+                    child: ReusableCard(color: activecardColor, width: 180)),
                 Expanded(
                     child: ReusableCard(
-                  color: Color(0xFF1D1E33),
+                  color: activecardColor,
                   width: 180,
                 )),
               ],
@@ -63,7 +74,7 @@ class BMICaculator extends StatelessWidget {
             Container(
               height: 80,
               width: double.infinity,
-              color: Color(0x0FFD1555),
+              color: Color(0x0FFEB1555),
             )
           ]),
         ),
