@@ -27,6 +27,13 @@ class _BMICaculatorState extends State<BMICaculator> {
         maleCardColor = inactiveCardColor;
       }
     }
+    if (gender == 2) {
+      if (femalecardColor == inactiveCardColor) {
+        femalecardColor = activeCardColor;
+      } else {
+        femalecardColor = inactiveCardColor;
+      }
+    }
   }
 
   @override
@@ -64,7 +71,9 @@ class _BMICaculatorState extends State<BMICaculator> {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      print('female button got pressed');
+                      setState(() {
+                        updateColor(2);
+                      });
                     },
                     child: ReusableCard(
                       cardChild: IconContent(
