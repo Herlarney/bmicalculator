@@ -23,6 +23,7 @@ class _BMICaculatorState extends State<BMICaculator> {
     if (gender == 1) {
       if (maleCardColor == inactiveCardColor) {
         maleCardColor = activeCardColor;
+        femalecardColor = inactiveCardColor;
       } else {
         maleCardColor = inactiveCardColor;
       }
@@ -30,6 +31,7 @@ class _BMICaculatorState extends State<BMICaculator> {
     if (gender == 2) {
       if (femalecardColor == inactiveCardColor) {
         femalecardColor = activeCardColor;
+        maleCardColor = inactiveCardColor;
       } else {
         femalecardColor = inactiveCardColor;
       }
