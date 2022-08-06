@@ -8,6 +8,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 const activeCardColor = Color(0xFF1D1E33);
 const inactiveCardColor = Color(0xFF111328);
 
+enum Card {
+  maleCard,
+  femaleCard,
+}
+
 class BMICaculator extends StatefulWidget {
   const BMICaculator({Key? key}) : super(key: key);
 
@@ -18,9 +23,8 @@ class BMICaculator extends StatefulWidget {
 class _BMICaculatorState extends State<BMICaculator> {
   Color maleCardColor = inactiveCardColor;
   Color femalecardColor = inactiveCardColor;
-  //1=male 2=female
-  void updateColor(int gender) {
-    if (gender == 1) {
+  void updateColor(Card pressedCard) {
+    if (pressedCard == Card.maleCard) {
       if (maleCardColor == inactiveCardColor) {
         maleCardColor = activeCardColor;
         femalecardColor = inactiveCardColor;
@@ -28,7 +32,7 @@ class _BMICaculatorState extends State<BMICaculator> {
         maleCardColor = inactiveCardColor;
       }
     }
-    if (gender == 2) {
+    if (pressedCard == Card.femaleCard) {
       if (femalecardColor == inactiveCardColor) {
         femalecardColor = activeCardColor;
         maleCardColor = inactiveCardColor;
@@ -57,7 +61,7 @@ class _BMICaculatorState extends State<BMICaculator> {
                     child: GestureDetector(
                   onTap: () {
                     setState(() {
-                      updateColor(1);
+                      updateColor(Card.maleCard);
                     });
                   },
                   child: ReusableCard(
@@ -74,7 +78,7 @@ class _BMICaculatorState extends State<BMICaculator> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        updateColor(2);
+                        updateColor(Card.femaleCard);
                       });
                     },
                     child: ReusableCard(
