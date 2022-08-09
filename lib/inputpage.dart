@@ -9,8 +9,8 @@ const activeCardColor = Color(0xFF1D1E33);
 const inactiveCardColor = Color(0xFF111328);
 
 enum Card {
-  maleCard,
-  femaleCard,
+  malecard,
+  femalecard,
 }
 
 class BMICaculator extends StatefulWidget {
@@ -21,26 +21,27 @@ class BMICaculator extends StatefulWidget {
 }
 
 class _BMICaculatorState extends State<BMICaculator> {
-  Color maleCardColor = inactiveCardColor;
-  Color femalecardColor = inactiveCardColor;
-  void updateColor(Card pressedCard) {
-    if (pressedCard == Card.maleCard) {
-      if (maleCardColor == inactiveCardColor) {
-        maleCardColor = activeCardColor;
-        femalecardColor = inactiveCardColor;
-      } else {
-        maleCardColor = inactiveCardColor;
-      }
-    }
-    if (pressedCard == Card.femaleCard) {
-      if (femalecardColor == inactiveCardColor) {
-        femalecardColor = activeCardColor;
-        maleCardColor = inactiveCardColor;
-      } else {
-        femalecardColor = inactiveCardColor;
-      }
-    }
-  }
+  Card? pressedcard;
+  // Color maleCardColor = inactiveCardColor;
+  // Color femalecardColor = inactiveCardColor;
+  // void updateColor(Card pressedCard) {
+  //   if (pressedCard == Card.maleCard) {
+  //     if (maleCardColor == inactiveCardColor) {
+  //       maleCardColor = activeCardColor;
+  //       femalecardColor = inactiveCardColor;
+  //     } else {
+  //       maleCardColor = inactiveCardColor;
+  //     }
+  //   }
+  //   if (pressedCard == Card.femaleCard) {
+  //     if (femalecardColor == inactiveCardColor) {
+  //       femalecardColor = activeCardColor;
+  //       maleCardColor = inactiveCardColor;
+  //     } else {
+  //       femalecardColor = inactiveCardColor;
+  //     }
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +62,7 @@ class _BMICaculatorState extends State<BMICaculator> {
                     child: GestureDetector(
                   onTap: () {
                     setState(() {
-                      updateColor(Card.maleCard);
+                      pressedcard = Card.malecard;
                     });
                   },
                   child: ReusableCard(
@@ -69,8 +70,13 @@ class _BMICaculatorState extends State<BMICaculator> {
                       icon: FontAwesomeIcons.mars,
                       label: 'Male',
                     ),
+                    color: pressedcard == Card.malecard
+                        ? activeCardColor
+                        : inactiveCardColor,
                     // ignore: prefer_const_constructors
-                    color: maleCardColor,
+                    //  color: pressedCard == Card.maleCard
+                    //     ? activeCardColor
+                    //     : inactiveCardColor,
                     width: 180,
                   ),
                 )),
@@ -78,7 +84,7 @@ class _BMICaculatorState extends State<BMICaculator> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        updateColor(Card.femaleCard);
+                        pressedcard = Card.femalecard;
                       });
                     },
                     child: ReusableCard(
@@ -86,7 +92,9 @@ class _BMICaculatorState extends State<BMICaculator> {
                         icon: FontAwesomeIcons.venus,
                         label: 'Female',
                       ),
-                      color: femalecardColor,
+                      color: pressedcard == Card.femalecard
+                          ? activeCardColor
+                          : inactiveCardColor,
                       width: 180,
                     ),
                   ),
